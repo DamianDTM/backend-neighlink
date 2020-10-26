@@ -40,5 +40,31 @@ namespace Neighlink.Api.Tests
             Assert.AreEqual(rep.GetPaymentsByBill(1), expected);
 
         }
+       
+       [TestMethod]
+        public void HU09()
+        {
+            PaymentCategory PayC = new PaymentCategory();
+            PaymentCategoryRepository rep = new PaymentCategoryRepository(context);
+            PayC.CondominiumId = 1;
+            IEnumerable<PaymentCategory> expected;
+            expected = rep.GetBuildingsByCondominium(PayC.CondominiumId);
+            Assert.AreEqual(rep.GetBuildingsByCondominium(1), expected);
+        }
+
+
+        [TestMethod]
+        public void HU10()
+        {
+
+
+            Payment pagoR = new Payment();
+            PaymentRepository rep = new PaymentRepository(context);
+            pagoR.UserId = 1;
+            IEnumerable<Payment> expected;
+            expected = rep.GetPaymentsByUser(pagoR.UserId);
+            Assert.AreEqual(rep.GetPaymentsByUser(1), expected);
+
+        }
     }
 }
